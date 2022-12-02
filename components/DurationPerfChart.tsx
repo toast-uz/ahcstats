@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScatterChart, Scatter, XAxis, YAxis, Label, CartesianGrid, Tooltip } from 'recharts';
-import { myContestHist } from '../data/ahc-stats';
+import { myContestHist } from '../lib/ahc-stats';
 
 const DurationPerfChart = () => (
   <div className="container">

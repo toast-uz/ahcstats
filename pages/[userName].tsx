@@ -3,7 +3,7 @@ import styles from '../styles/Home.module.css'
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 
-const HistChartWithoutSSR =  dynamic(
+const HistChartWithoutSSR = dynamic(
   import("../components/HistChart"),
   { ssr: false }
 );
@@ -20,7 +20,7 @@ const PerfRateChartWithoutSSR = dynamic(
   { ssr: false }
 );
 
-import { latestContestName } from '../data/ahc-stats';
+import { latestContestName } from '../lib/ahc-stats';
 
 export default function Home() {
   const router = useRouter();

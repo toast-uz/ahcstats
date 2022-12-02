@@ -1,4 +1,4 @@
-import ahcStats from './ahc-stats.json'
+import ahcStats from '../json/ahc-stats.json'
 
 const userName = 'ToastUz';
 const latestId = ahcStats.length - 1;

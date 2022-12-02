@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScatterChart, Scatter, XAxis, YAxis, Label, CartesianGrid, Tooltip } from 'recharts';
-import { latestContestResults, myLatestContestResults } from '../data/ahc-stats';
+import { latestContestResults, myLatestContestResults } from '../lib/ahc-stats';
 
 const perfRateChart = () => (
   <div className="container">
