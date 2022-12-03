@@ -12,12 +12,12 @@ const PerfRateChart = ({ userName }: Props) => (
           <tspan fontSize="1.2rem"> {latestContestName} Heuristic Rate vs Perf</tspan>
       </text>
       <CartesianGrid />
-      <XAxis type="number" dataKey="HRate" name="Heuristic Rate"
+      <XAxis type="number" dataKey="HRateOld" name="Heuristic Rate (old)"
         ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} domain={[0, 3200]}
-        label={{ value: "Heuristic Rate", offset: 0, position: "bottom"}} />
+        label={{ value: "Heuristic Rate (old)", position: "bottom"}} />
       <YAxis type="number" dataKey="Perf" name="Heuristic Perf"
         ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]}
-        label={{ value: 'Heuristic Perf', offset: 10, position: 'top', textAnchor: 'middle' }} />
+        label={{ value: 'Heuristic Perf', angle: -90, position: 'insideBottomLeft'}} />
       <Tooltip cursor={{ strokeDasharray: '3 3' }} />
       <Scatter name="all" fill="#8884d8" data={latestContestResults} />
       <Scatter name="you" fill="red"

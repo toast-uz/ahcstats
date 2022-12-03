@@ -19,7 +19,7 @@ const Layout = ({ children }: Props) => {
       </main>
 
       <footer className={styles.footer}>
-        by ToastUz
+        <a href='https://twitter.com/ToastUz'> by ToastUz </a>
       </footer>
     </div>
   )

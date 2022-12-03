@@ -14,10 +14,10 @@ const XRateChart = ({ userName }: Props) => (
       <CartesianGrid />
       <XAxis type="number" dataKey="ARate" name="Algo Rate"
         ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} domain={[0, 3200]}
-        label={{ value: "Algo Rate", offset: 0, position: "bottom"}} />
-      <YAxis type="number" dataKey="HRate" name="Heuristic Rate"
+        label={{ value: "Algo Rate (sometime after the event)", position: "bottom"}} />
+      <YAxis type="number" dataKey="HRate" name="Heuristic Rate (new)"
         ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]}
-        label={{ value: 'Heuristic Rate', offset: 10, position: 'top', textAnchor: 'middle' }} />
+        label={{ value: 'Heuristic Rate (new)', angle: -90, position: 'insideBottomLeft'}} />
       <Tooltip cursor={{ strokeDasharray: '3 3' }} />
       <Scatter name="all" fill="#8884d8" data={latestContestResults} />
       <Scatter name="you" fill="red"
