@@ -17,6 +17,10 @@ const Layout = ({ children }: Props) => {
         </header>
         { children }
       </main>
+
+      <footer className={styles.footer}>
+        by ToastUz
+      </footer>
     </div>
   )
 };
