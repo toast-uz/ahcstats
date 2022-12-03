@@ -21,7 +21,7 @@ const Layout = ({ children }: Props) => {
       </main>
 
       <footer className={styles.footer}>
-        <a href='https://twitter.com/ToastUz'> by ToastUz </a>
+        by <a href='https://twitter.com/ToastUz'>ToastUz</a>, source code is at <a href='https://github.com/toast-uz/ahc-stats'>GitHub</a>
       </footer>
       <Analytics />
     </div>
