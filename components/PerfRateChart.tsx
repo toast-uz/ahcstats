@@ -1,15 +1,17 @@
 import React from 'react';
 import { ScatterChart, Scatter, XAxis, YAxis, Label, CartesianGrid, Tooltip } from 'recharts';
-import { latestContestName, latestContestResults, GetLatestContestResultIdBy } from '../lib/ahc-stats';
+import { ContestResult } from '../types';
 
-type Props = { userName: string }
+type Props = { userName: string, latestContestName: string,
+  latestContestResults: ContestResult[], myLatestContestResult: ContestResult }
 
-const PerfRateChart = ({ userName }: Props) => (
+const PerfRateChart = ({ userName, latestContestName,
+    latestContestResults, myLatestContestResult }: Props) => (
   <div className="container">
     <ScatterChart width={700} height={350}
       margin={{top: 50, right: 20, left: 20, bottom: 50}}>
       <text x={700 / 2} y={10} fill="black" textAnchor="middle" dominantBaseline="central">
-          <tspan fontSize="1.2rem"> {latestContestName} Heuristic Rate vs Perf</tspan>
+          <tspan fontSize="1.2rem"> {latestContestName} Heuristic Rate vs Perf ({userName} is red)</tspan>
       </text>
       <CartesianGrid />
       <XAxis type="number" dataKey="HRateOld" name="Heuristic Rate (old)"
@@ -21,7 +23,7 @@ const PerfRateChart = ({ userName }: Props) => (
       <Tooltip cursor={{ strokeDasharray: '3 3' }} />
       <Scatter name="all" fill="#8884d8" data={latestContestResults} />
       <Scatter name="you" fill="red"
-        data={[latestContestResults[GetLatestContestResultIdBy(userName)]]} />
+        data={[myLatestContestResult]} />
       <Label value="Pages of my website" offset={0} position="top" />
     </ScatterChart>
   </div>

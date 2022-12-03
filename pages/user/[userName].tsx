@@ -2,7 +2,7 @@ import Layout from '../../components/Layout';
 import styles from '../../styles/Home.module.css'
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
-import { GetMyContestsHist } from '../../lib/ahc-stats';
+import { GetMyContestsHist, latestContestName, latestContestResults, GetLatestContestResultIdBy } from '../../lib/ahc-stats';
 
 const HistChartWithoutSSR = dynamic(
   import("../../components/HistChart"), { ssr: false });
@@ -13,13 +13,12 @@ const XRateChartWithoutSSR = dynamic(
 const PerfRateChartWithoutSSR = dynamic(
   import("../../components/PerfRateChart"), { ssr: false });
 
-import { latestContestName } from '../../lib/ahc-stats';
-
 export default function Home() {
   const router = useRouter();
   let { userName } = router.query;
   userName = userName as string;
   const myContestHist = GetMyContestsHist(userName);
+  const myLatestContestResult = latestContestResults[GetLatestContestResultIdBy(userName)];
   return (
     <Layout>
       <div className={styles.description}>
@@ -38,11 +37,18 @@ export default function Home() {
       </div>
 
       <div className={styles.grid}>
-        <PerfRateChartWithoutSSR userName={userName} />
+        <PerfRateChartWithoutSSR
+          userName={userName}
+          latestContestName={latestContestName}
+          latestContestResults={latestContestResults}
+          myLatestContestResult={myLatestContestResult} />
       </div>
 
       <div className={styles.grid}>
-        <XRateChartWithoutSSR userName={userName} />
+        <XRateChartWithoutSSR userName={userName}
+          latestContestName={latestContestName}
+          latestContestResults={latestContestResults}
+          myLatestContestResult={myLatestContestResult} />
       </div>
     </Layout>
   )

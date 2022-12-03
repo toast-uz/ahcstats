@@ -1,8 +1,8 @@
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, Label, CartesianGrid, Tooltip } from 'recharts';
-import { ContestResult } from '../types';
+import { UserResult } from '../types';
 
-type Props = { userName: string, myContestHist: ContestResult[]}
+type Props = { userName: string, myContestHist: UserResult[]}
 
 const HistChart = ({ userName, myContestHist }: Props) => (
   <div className="container">

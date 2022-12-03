@@ -1,8 +1,8 @@
 import React from 'react';
 import { ScatterChart, Scatter, XAxis, YAxis, Label, CartesianGrid, Tooltip } from 'recharts';
-import { ContestResult } from '../types';
+import { UserResult } from '../types';
 
-type Props = { userName: string, myContestHist: ContestResult[]}
+type Props = { userName: string, myContestHist: UserResult[]}
 
 const DurationPerfChart = ({ userName, myContestHist }: Props) => (
   <div className="container">
