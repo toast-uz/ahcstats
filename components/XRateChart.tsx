@@ -1,13 +1,13 @@
 import React from 'react';
 import { ScatterChart, Scatter, XAxis, YAxis, Label, CartesianGrid, Tooltip } from 'recharts';
-import { latestContestResults, myLatestContestResults } from '../lib/ahc-stats';
+import { latestContestName, latestContestResults, myLatestContestResults } from '../lib/ahc-stats';
 
 const xRateChart = () => (
   <div className="container">
     <ScatterChart width={700} height={350}
       margin={{top: 50, right: 20, left: 20, bottom: 50}}>
       <text x={700 / 2} y={10} fill="black" textAnchor="middle" dominantBaseline="central">
-          <tspan fontSize="1.2rem">Latest Algo vs Heuristic Rate</tspan>
+          <tspan fontSize="1.2rem"> {latestContestName} Algo vs Heuristic Rate</tspan>
       </text>
       <CartesianGrid />
       <XAxis type="number" dataKey="ARate" name="Algo Rate"
