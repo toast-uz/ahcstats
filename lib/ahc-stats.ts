@@ -1,6 +1,5 @@
 import ahcStats from '../json/ahc-stats.json'
 
-const userName = 'ToastUz';
 const latestId = ahcStats.length - 1;
 
 function GetContestResultIdBy(id: number, userName: string): number {
@@ -11,11 +10,8 @@ export function GetLatestContestResultIdBy(userName: string): number {
     return GetContestResultIdBy(latestId, userName);
 }
 
-const myLatestContestResultId = GetContestResultIdBy(latestId, userName);
-
 export const latestContestName = ahcStats[latestId].ContestName;
 export const latestContestResults = ahcStats[latestId].Results;
-export const myLatestContestResults = [ latestContestResults[myLatestContestResultId] ];
 
 type ContestResult = {
     contestName: string;
@@ -43,5 +39,3 @@ export function GetMyContestsHist(userName: string): ContestResult[] {
     }
     return res;
 }
-
-export const myContestHist = GetMyContestsHist(userName);
