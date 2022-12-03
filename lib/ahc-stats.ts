@@ -22,7 +22,6 @@ export function GetMyContestsHist(userName: string): UserResult[] {
         const result: UserResult = {
             contestName: ahcStats[id].ContestName,
             duration: ahcStats[id].Duration,
-            endDate: ahcStats[id].EndDate,
             perf: myContestResult?.Perf,
             rate: myContestResult?.HRate,
         };

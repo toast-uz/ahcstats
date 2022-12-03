@@ -1,7 +1,6 @@
 export type UserResult = {
     contestName: string;
     duration: number;
-    endDate: string;
     perf: number;
     rate: number;
 }
