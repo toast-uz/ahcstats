@@ -27,12 +27,12 @@ export default function Home() {
   const { userName } = router.query;
   return (
     <Layout>
-      <p className={styles.description}>
+      <div className={styles.description}>
         User name:
         <code className={styles.code}>{userName}</code>
         - Latest contest: {' '}
         <code className={styles.code}>{latestContestName}</code>
-      </p>
+      </div>
 
       <div className={styles.grid}>
         <HistChartWithoutSSR />

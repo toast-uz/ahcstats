@@ -12,14 +12,10 @@ export const Layout = ({ children }: Props) => {
       </Head>
 
       <main className={styles.main}>
-        <header>
-          <h1 className={styles.title}>
-            <a href="https://atcoder.jp/" target="_blank" rel="noopener noreferrer">AtCoder</a> Heuristic Contest Statistics (AHC-stats)
-          </h1>
+        <header className={styles.title}>
+          <a href="https://atcoder.jp/" target="_blank" rel="noopener noreferrer">AtCoder</a> Heuristic Contest Statistics (AHC-stats)
         </header>
-        <body>
-          { children }
-        </body>
+        { children }
       </main>
     </div>
   )

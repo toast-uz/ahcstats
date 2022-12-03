@@ -14,10 +14,10 @@ export default function Home() {
   }
   return (
     <Layout>
-      <div>
+      <div className={styles.description}>
         <input className={styles.input} type="text" name="name"
-          ref={inputRef} placeholder="AtCoder UserID" />
-        <button onClick={handleClick}>Submit</button>
+          ref={inputRef} placeholder="AtCoder UserName" />
+        <button className={styles.code} onClick={handleClick}>Submit</button>
       </div>
     </Layout>
   )
