@@ -1,8 +1,10 @@
 import React from 'react';
 import { ScatterChart, Scatter, XAxis, YAxis, Label, CartesianGrid, Tooltip } from 'recharts';
-import { latestContestName, latestContestResults, myLatestContestResults } from '../lib/ahc-stats';
+import { latestContestName, latestContestResults, GetLatestContestResultIdBy } from '../lib/ahc-stats';
 
-const perfRateChart = () => (
+type Props = { userName: string }
+
+const PerfRateChart = ({ userName }: Props) => (
   <div className="container">
     <ScatterChart width={700} height={350}
       margin={{top: 50, right: 20, left: 20, bottom: 50}}>
@@ -17,11 +19,12 @@ const perfRateChart = () => (
         ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]}
         label={{ value: 'Heuristic Perf', offset: 10, position: 'top', textAnchor: 'middle' }} />
       <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-      <Scatter name="all" data={latestContestResults} fill="#8884d8" />
-      <Scatter name="you" data={myLatestContestResults} fill="red" />
+      <Scatter name="all" fill="#8884d8" data={latestContestResults} />
+      <Scatter name="you" fill="red"
+        data={[latestContestResults[GetLatestContestResultIdBy(userName)]]} />
       <Label value="Pages of my website" offset={0} position="top" />
     </ScatterChart>
   </div>
 );
 
-export default perfRateChart;
+export default PerfRateChart;

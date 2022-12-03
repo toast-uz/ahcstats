@@ -3,8 +3,12 @@ import ahcStats from '../json/ahc-stats.json'
 const userName = 'ToastUz';
 const latestId = ahcStats.length - 1;
 
-const GetContestResultIdBy = (id: number, name: string): number => {
-    return ahcStats[id].Results.findIndex(elm => elm.UserName == name);
+function GetContestResultIdBy(id: number, userName: string): number {
+    return ahcStats[id].Results.findIndex(elm => elm.UserName == userName);
+}
+
+export function GetLatestContestResultIdBy(userName: string): number {
+    return GetContestResultIdBy(latestId, userName);
 }
 
 const myLatestContestResultId = GetContestResultIdBy(latestId, userName);
@@ -22,7 +26,7 @@ type ContestResult = {
     rate: number;
 }
 
-const GetMyContestsHist = (name: string): ContestResult[] => {
+export function GetMyContestsHist(userName: string): ContestResult[] {
     let res: ContestResult[] = [];
     for (let id = 0; id <= latestId; id++) {
         const myContestResultId = GetContestResultIdBy(id, userName);

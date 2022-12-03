@@ -3,7 +3,7 @@ import styles from '../styles/Home.module.css'
 import type { ReactNode } from 'react';
 type Props = { children: ReactNode; };
 
-export const Layout = ({ children }: Props) => {
+const Layout = ({ children }: Props) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -20,3 +20,5 @@ export const Layout = ({ children }: Props) => {
     </div>
   )
 };
+
+export default Layout;
