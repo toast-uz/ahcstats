@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import type { ReactNode } from 'react';
+import { Analytics } from '@vercel/analytics/react';
+
 type Props = { children: ReactNode; };
 
 const Layout = ({ children }: Props) => {
@@ -21,6 +23,7 @@ const Layout = ({ children }: Props) => {
       <footer className={styles.footer}>
         <a href='https://twitter.com/ToastUz'> by ToastUz </a>
       </footer>
+      <Analytics />
     </div>
   )
 };
