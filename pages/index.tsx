@@ -10,7 +10,7 @@ export default function Home() {
     event.preventDefault();
     const userName = inputRef?.current?.value;
     console.log(inputRef?.current?.value);
-    router.push('/' + userName);
+    router.push('/user/' + userName);
   }
   return (
     <Layout>
