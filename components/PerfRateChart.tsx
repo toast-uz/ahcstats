@@ -1,19 +1,22 @@
 import React from 'react';
-import styles from '../styles/Home.module.css';
+import styles from '../styles/Charts.module.css';
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, TooltipProps } from 'recharts';
 import { ValueType, NameType } from 'recharts/src/component/DefaultTooltipContent';
 import { ContestResult } from '../types';
+import AtCoderColorByRate from '../lib/AtCoderColorClassName';
 
 type Props = { userName: string, latestContestName: string,
   latestContestResults: ContestResult[], myLatestContestResult: ContestResult }
 
 const CustomTooltip = ({ active, payload, label }: TooltipProps<ValueType, NameType>) => {
-  if (active) {
+  if (active && payload && payload.length) {
+    const hRateOld = payload[0].payload.HRateOld;
+    const perf = payload[0].payload.Perf;
     return (
       <div className={styles.custom_tooltip}>
-        <p className={styles.intro}>{payload?.[0].payload.UserName}</p>
-        <p className={styles.desc}>Rate: {payload?.[0].payload.HRateOld}</p>
-        <p className={styles.desc}>Perf: {payload?.[0].payload.Perf}</p>
+        <p className={styles.introduction}>{payload[0].payload.UserName}</p>
+        <p className={styles[AtCoderColorByRate(hRateOld)]}>rate: {hRateOld}</p>
+        <p className={styles[AtCoderColorByRate(perf)]}>perf: {perf}</p>
       </div>
     );
   }

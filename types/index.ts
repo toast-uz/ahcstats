@@ -7,6 +7,7 @@ export type UserResult = {
 
 export type ContestResult = {
   UserName: string;
+  HRateOld: number;
   HRate: number;
   Perf: number;
   ARate: number;

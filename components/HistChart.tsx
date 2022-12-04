@@ -1,8 +1,26 @@
 import React from 'react';
-import { LineChart, Line, XAxis, YAxis, Legend, CartesianGrid, Tooltip } from 'recharts';
+import styles from '../styles/Charts.module.css';
+import { LineChart, Line, XAxis, YAxis, Legend, CartesianGrid, Tooltip, TooltipProps } from 'recharts';
+import { ValueType, NameType } from 'recharts/src/component/DefaultTooltipContent';
 import { UserResult } from '../types';
+import AtCoderColorByRate from '../lib/AtCoderColorClassName';
 
 type Props = { userName: string, myContestHist: UserResult[]}
+
+const CustomTooltip = ({ active, payload, label }: TooltipProps<ValueType, NameType>) => {
+  if (active && payload && payload.length) {
+    const rate = payload[0].value as number;
+    const perf = payload[1].value as number;
+    return (
+      <div className={styles.custom_tooltip}>
+        <p className={styles.introduction}>{label}</p>
+        <p className={styles[AtCoderColorByRate(perf)]}>perf: {perf}</p>
+        <p className={styles[AtCoderColorByRate(rate)]}>rate: {rate}</p>
+      </div>
+    );
+  }
+  return null;
+};
 
 const HistChart = ({ userName, myContestHist }: Props) => (
   <div className="container">
@@ -17,7 +35,7 @@ const HistChart = ({ userName, myContestHist }: Props) => (
       <XAxis dataKey="contestName" />
       <YAxis
         ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} />
-      <Tooltip />
+      <Tooltip content={<CustomTooltip />} />
       <Line type="monotone" dataKey="perf" stroke="red" />
       <Line type="monotone" dataKey="rate" stroke="green" />
     </LineChart>
