@@ -9,8 +9,8 @@ type Props = { userName: string, myContestHist: UserResult[]}
 
 const CustomTooltip = ({ active, payload, label }: TooltipProps<ValueType, NameType>) => {
   if (active && payload && payload.length) {
-    const rate = payload[0].value as number;
-    const perf = payload[1].value as number;
+    const perf = payload[0].value as number;
+    const rate = payload[1].value as number;
     return (
       <div className={styles['custom-tooltip']}>
         <p className={styles.introduction}>{label}</p>
@@ -36,8 +36,8 @@ const HistChart = ({ userName, myContestHist }: Props) => (
       <YAxis
         ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} />
       <Tooltip content={<CustomTooltip />} />
-      <Line type="monotone" dataKey="perf" stroke="red" />
-      <Line type="monotone" dataKey="rate" stroke="green" />
+      <Line type="monotone" dataKey="perf" stroke="red" connectNulls={true} />
+      <Line type="monotone" dataKey="rate" stroke="green" connectNulls={true} />
     </LineChart>
   </div>
 );
