@@ -11,7 +11,7 @@ const CustomTooltip = ({ active, payload, label }: TooltipProps<ValueType, NameT
     return (
       <div className={styles.custom_tooltip}>
         <p className={styles.intro}>{payload?.[0].payload.contestName}</p>
-        <p className={styles.desc}>duration: {payload?.[0].payload.duration}</p>
+        <p className={styles.desc}>duration: {payload?.[0].payload.duration}h</p>
         <p className={styles.desc}>perf: {payload?.[0].payload.perf}</p>
       </div>
     );
