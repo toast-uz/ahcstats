@@ -51,6 +51,17 @@
   text-align: center;
 }
 
+.description a {
+  color: #0070f3;
+  text-decoration: none;
+}
+
+.description a:hover,
+.description a:focus,
+.description a:active {
+  text-decoration: underline;
+}
+
 .description {
   margin: 4rem 0;
   line-height: 1.5;
