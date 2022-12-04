@@ -12,8 +12,7 @@ export function GetLatestContestResultIdBy(userName: string): number {
 }
 
 export const latestContestName: string = ahcStats[latestId].ContestName;
-export const latestContestResults: ContestResult[] = ahcStats[latestId].Results
-  .filter((value) => value.Perf > 0);
+export const latestContestResults: ContestResult[] = ahcStats[latestId].Results;
 
 export function GetMyContestsHist(userName: string): UserResult[] {
   let res: UserResult[] = [];
