@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <Layout>
       <div className={styles.description}>
-        <input className={styles.input} type="text" name="name"
+        <input className={styles.input} type="text" name="AtCoder UserName"
           ref={inputRef} placeholder="AtCoder UserName" />
         <button className={styles.code} onClick={handleClick}>Submit</button>
       </div>
