@@ -1,8 +1,23 @@
 import React from 'react';
-import { ScatterChart, Scatter, XAxis, YAxis, Label, CartesianGrid, Tooltip } from 'recharts';
+import styles from '../styles/Home.module.css';
+import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, TooltipProps } from 'recharts';
+import { ValueType, NameType } from 'recharts/src/component/DefaultTooltipContent';
 import { UserResult } from '../types';
 
 type Props = { userName: string, myContestHist: UserResult[]}
+
+const CustomTooltip = ({ active, payload, label }: TooltipProps<ValueType, NameType>) => {
+  if (active) {
+    return (
+      <div className={styles.custom_tooltip}>
+        <p className={styles.intro}>{payload?.[0].payload.contestName}</p>
+        <p className={styles.desc}>duration: {payload?.[0].payload.duration}</p>
+        <p className={styles.desc}>perf: {payload?.[0].payload.perf}</p>
+      </div>
+    );
+  }
+  return null;
+};
 
 const DurationPerfChart = ({ userName, myContestHist }: Props) => (
   <div className="container">
@@ -13,13 +28,12 @@ const DurationPerfChart = ({ userName, myContestHist }: Props) => (
       </text>
       <CartesianGrid />
       <XAxis type="number" dataKey="duration" name="Contest duration"
-        ticks={[1, 2, 5, 10, 20, 50, 100, 200, 500]} domain={['dataMin', 'dataMax']} scale="log">
-        <Label value="Contest duration (hours)" position="bottom" />
-      </XAxis>
+        ticks={[1, 2, 5, 10, 20, 50, 100, 200, 500]} domain={['dataMin', 'dataMax']} scale="log"
+        label={{ value: 'Contest duration (hours)', position: 'bottom'}} />
       <YAxis type="number" dataKey="perf" name="Perf"
         label={{ value: 'Perf', angle: -90, position: 'left'}}
         ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} />
-      <Tooltip />
+      <Tooltip content={<CustomTooltip />} />
       <Scatter name="Contest duration and perf"
         data={myContestHist} fill="red" />
     </ScatterChart>

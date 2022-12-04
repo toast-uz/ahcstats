@@ -1,9 +1,24 @@
 import React from 'react';
-import { ScatterChart, Scatter, XAxis, YAxis, Label, CartesianGrid, Tooltip } from 'recharts';
+import styles from '../styles/Home.module.css';
+import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, TooltipProps } from 'recharts';
+import { ValueType, NameType } from 'recharts/src/component/DefaultTooltipContent';
 import { ContestResult } from '../types';
 
 type Props = { userName: string, latestContestName: string,
   latestContestResults: ContestResult[], myLatestContestResult: ContestResult }
+
+const CustomTooltip = ({ active, payload, label }: TooltipProps<ValueType, NameType>) => {
+  if (active) {
+    return (
+      <div className={styles.custom_tooltip}>
+        <p className={styles.intro}>{payload?.[0].payload.UserName}</p>
+        <p className={styles.desc}>duration: {payload?.[0].payload.HRateOld}</p>
+        <p className={styles.desc}>perf: {payload?.[0].payload.Perf}</p>
+      </div>
+    );
+  }
+  return null;
+};
 
 const PerfRateChart = ({ userName, latestContestName,
     latestContestResults, myLatestContestResult }: Props) => (
@@ -20,7 +35,7 @@ const PerfRateChart = ({ userName, latestContestName,
       <YAxis type="number" dataKey="Perf" name="Perf"
         ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]}
         label={{ value: 'Perf', angle: -90, position: 'left'}} />
-      <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+      <Tooltip content={<CustomTooltip />} />
       <Scatter name="all" fill="#8884d8" data={latestContestResults} />
       <Scatter name="you" fill="red"
         data={[myLatestContestResult]} />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { LineChart, Line, XAxis, YAxis, Label, CartesianGrid, Tooltip } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Legend, CartesianGrid, Tooltip } from 'recharts';
 import { UserResult } from '../types';
 
 type Props = { userName: string, myContestHist: UserResult[]}
@@ -13,6 +13,7 @@ const HistChart = ({ userName, myContestHist }: Props) => (
           <tspan fontSize="1.2rem"> {userName}&apos;s rate and perf history</tspan>
       </text>
       <CartesianGrid />
+      <Legend />
       <XAxis dataKey="contestName" />
       <YAxis
         ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} />
