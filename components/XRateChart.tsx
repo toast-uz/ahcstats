@@ -10,13 +10,13 @@ type Props = { userName: string, latestContestName: string,
 
 const CustomTooltip = ({ active, payload, label }: TooltipProps<ValueType, NameType>) => {
   if (active && payload && payload.length) {
-    const aRate = payload[0].payload.ARate;
-    const hRate = payload[0].payload.HRate;
+    const aRate = payload[0].payload.aRate;
+    const hRate = payload[0].payload.hRate;
     return (
       <div className={styles['custom-tooltip']}>
-        <p className={styles.introduction}>{payload[0].payload.UserName}</p>
-        <p className={styles['description-' + AtCoderColorByRate(aRate)]}>Algo: {aRate}</p>
-        <p className={styles['description-' + AtCoderColorByRate(hRate)]}>Heuristic: {hRate}</p>
+        <p className={styles.introduction}>{payload[0].payload.userName}</p>
+        <p className={styles['description-' + AtCoderColorByRate(aRate)]}>algo: {aRate}</p>
+        <p className={styles['description-' + AtCoderColorByRate(hRate)]}>heuristic: {hRate}</p>
       </div>
     );
   }
@@ -32,12 +32,12 @@ const XRateChart = ({ userName, latestContestName,
           <tspan fontSize="1.2rem">Algo and heuristic rates of {latestContestName} ({userName} is red)</tspan>
       </text>
       <CartesianGrid />
-      <XAxis type="number" dataKey="ARate" name="Algo"
+      <XAxis type="number" dataKey="aRate" name="algo"
         ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} domain={['dataMin', 'dataMax']}
-        label={{ value: "Algo (sometime after the event)", position: "bottom"}} />
-      <YAxis type="number" dataKey="HRate" name="Heuristic (new)"
+        label={{ value: "algo (sometime after the event)", position: "bottom"}} />
+      <YAxis type="number" dataKey="hRate" name="heuristic (new)"
         ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]}
-        label={{ value: 'Heuristic (new)', angle: -90, position: 'left'}} />
+        label={{ value: 'heuristic (new)', angle: -90, position: 'left'}} />
       <Tooltip content={<CustomTooltip />} />
       <Scatter name="all" fill="#8884d8" data={latestContestResults} />
       <Scatter name="you" fill="red"
