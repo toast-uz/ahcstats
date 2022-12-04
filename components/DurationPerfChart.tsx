@@ -13,12 +13,12 @@ const DurationPerfChart = ({ userName, myContestHist }: Props) => (
       </text>
       <CartesianGrid />
       <XAxis type="number" dataKey="duration" name="Contest duration"
-        ticks={[1, 2, 5, 10, 20, 50, 100, 200, 500]} domain={[1, 500]} scale="log">
+        ticks={[1, 2, 5, 10, 20, 50, 100, 200, 500]} domain={['dataMin', 'dataMax']} scale="log">
         <Label value="Contest duration (hours)" position="bottom" />
       </XAxis>
       <YAxis type="number" dataKey="perf" name="Perf"
         label={{ value: 'Perf', angle: -90, position: 'left'}}
-        ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} domain={[0, 3200]} />
+        ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} />
       <Tooltip />
       <Scatter name="Contest duration and perf"
         data={myContestHist} fill="red" />

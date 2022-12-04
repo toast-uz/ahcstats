@@ -15,7 +15,7 @@ const XRateChart = ({ userName, latestContestName,
       </text>
       <CartesianGrid />
       <XAxis type="number" dataKey="ARate" name="Algo"
-        ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} domain={[0, 3200]}
+        ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} domain={['dataMin', 'dataMax']}
         label={{ value: "Algo (sometime after the event)", position: "bottom"}} />
       <YAxis type="number" dataKey="HRate" name="Heuristic (new)"
         ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]}

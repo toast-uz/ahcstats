@@ -15,7 +15,7 @@ const HistChart = ({ userName, myContestHist }: Props) => (
       <CartesianGrid />
       <XAxis dataKey="contestName" />
       <YAxis
-        ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} domain={[0, 3200]} />
+        ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} />
       <Tooltip />
       <Line type="monotone" dataKey="perf" stroke="red" />
       <Line type="monotone" dataKey="rate" stroke="green" />

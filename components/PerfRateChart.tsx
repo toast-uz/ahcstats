@@ -15,7 +15,7 @@ const PerfRateChart = ({ userName, latestContestName,
       </text>
       <CartesianGrid />
       <XAxis type="number" dataKey="HRateOld" name="Rate (old)"
-        ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} domain={[0, 3200]}
+        ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} domain={['dataMin', 'dataMax']}
         label={{ value: "Rate (old)", position: "bottom"}} />
       <YAxis type="number" dataKey="Perf" name="Perf"
         ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]}
