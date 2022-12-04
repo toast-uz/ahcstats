@@ -7,7 +7,7 @@ export default function AtCoderColorByRate(num: number): string {
   } else if (num < 1200) {
     colorName = 'green';
   } else if (num < 1600) {
-    colorName = 'cyan';
+    colorName = 'lightblue';
   } else if (num < 2000) {
     colorName = 'blue';
   } else if (num < 2400) {
@@ -17,5 +17,5 @@ export default function AtCoderColorByRate(num: number): string {
   } else {
     colorName = 'red';
   }
-  return 'atcoder_' + colorName;
+  return colorName;
 }

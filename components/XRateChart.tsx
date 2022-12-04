@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from '../styles/Charts.module.css';
+import styles from '../styles/Charts.module.scss';
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, TooltipProps } from 'recharts';
 import { ValueType, NameType } from 'recharts/src/component/DefaultTooltipContent';
 import { ContestResult } from '../types';
-import AtCoderColorByRate from '../lib/AtCoderColorClassName';
+import AtCoderColorByRate from '../lib/AtCoderColor';
 
 type Props = { userName: string, latestContestName: string,
   latestContestResults: ContestResult[], myLatestContestResult: ContestResult }
@@ -13,10 +13,10 @@ const CustomTooltip = ({ active, payload, label }: TooltipProps<ValueType, NameT
     const aRate = payload[0].payload.ARate;
     const hRate = payload[0].payload.HRate;
     return (
-      <div className={styles.custom_tooltip}>
+      <div className={styles['custom-tooltip']}>
         <p className={styles.introduction}>{payload[0].payload.UserName}</p>
-        <p className={styles[AtCoderColorByRate(aRate)]}>Algo: {aRate}</p>
-        <p className={styles[AtCoderColorByRate(hRate)]}>Heuristic: {hRate}</p>
+        <p className={styles['description-' + AtCoderColorByRate(aRate)]}>Algo: {aRate}</p>
+        <p className={styles['description-' + AtCoderColorByRate(hRate)]}>Heuristic: {hRate}</p>
       </div>
     );
   }

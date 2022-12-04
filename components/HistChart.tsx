@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from '../styles/Charts.module.css';
+import styles from '../styles/Charts.module.scss';
 import { LineChart, Line, XAxis, YAxis, Legend, CartesianGrid, Tooltip, TooltipProps } from 'recharts';
 import { ValueType, NameType } from 'recharts/src/component/DefaultTooltipContent';
 import { UserResult } from '../types';
-import AtCoderColorByRate from '../lib/AtCoderColorClassName';
+import AtCoderColorByRate from '../lib/AtCoderColor';
 
 type Props = { userName: string, myContestHist: UserResult[]}
 
@@ -12,10 +12,10 @@ const CustomTooltip = ({ active, payload, label }: TooltipProps<ValueType, NameT
     const rate = payload[0].value as number;
     const perf = payload[1].value as number;
     return (
-      <div className={styles.custom_tooltip}>
+      <div className={styles['custom-tooltip']}>
         <p className={styles.introduction}>{label}</p>
-        <p className={styles[AtCoderColorByRate(perf)]}>perf: {perf}</p>
-        <p className={styles[AtCoderColorByRate(rate)]}>rate: {rate}</p>
+        <p className={styles['description-' + AtCoderColorByRate(perf)]}>perf: {perf}</p>
+        <p className={styles['description-' + AtCoderColorByRate(rate)]}>rate: {rate}</p>
       </div>
     );
   }

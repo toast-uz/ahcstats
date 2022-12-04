@@ -1,4 +1,4 @@
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.scss'
 import Script from "next/script";
 import Link from 'next/link';
 import Layout from "../components/Layout";

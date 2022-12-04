@@ -1,5 +1,5 @@
 import Layout from '../../components/Layout';
-import styles from '../../styles/Home.module.css'
+import styles from '../../styles/Home.module.scss'
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { GetMyContestsHist, latestContestName, latestContestResults, GetLatestContestResultIdBy } from '../../lib/ahc-stats';

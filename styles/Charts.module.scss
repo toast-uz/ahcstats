@@ -1,0 +1,26 @@
+@use "internallink" as internal;
+
+.custom-tooltip {
+  margin: 0;
+  line-height: 24px;
+  border: 1px solid #d0d0d0;
+  background-color: rgba(255, 255, 255, 1.0);
+  padding: 10px;
+}
+
+.introduction {
+  border-top: 1px solid #f5f5f5;
+  margin: 0;
+}
+
+.description {
+  margin: 0;
+  color: rgb(3, 62, 146)
+}
+
+@each $key, $value in internal.$atcoder-colors {
+  .description-#{$key} {
+    margin: 0;
+    color: $value;
+  }
+}

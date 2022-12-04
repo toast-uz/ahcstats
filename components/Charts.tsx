@@ -1,4 +1,4 @@
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.scss'
 import HistChart from './HistChart';
 import DurationPerfChart from './DurationPerfChart';
 import PerfRateChart from './PerfRateChart';
