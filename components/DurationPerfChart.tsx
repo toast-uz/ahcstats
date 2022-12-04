@@ -9,11 +9,12 @@ type Props = { userName: string, myContestHist: UserResult[]}
 
 const CustomTooltip = ({ active, payload, label }: TooltipProps<ValueType, NameType>) => {
   if (active && payload && payload.length) {
-    const perf = payload[0].payload.perf;
+    const duration = payload[0].value as number;
+    const perf = payload[1].value as number;
     return (
       <div className={styles['custom-tooltip']}>
         <p className={styles.introduction}>{payload[0].payload.contestName}</p>
-        <p className={styles.description}>duration: {payload[0].payload.duration}h</p>
+        <p className={styles.description}>duration: {duration}h</p>
         <p className={styles['description-' + AtCoderColorByRate(perf)]}>perf: {perf}</p>
       </div>
     );

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../styles/Charts.module.scss';
-import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, TooltipProps } from 'recharts';
+import { ScatterChart, Scatter, XAxis, YAxis, ZAxis, CartesianGrid, Tooltip, TooltipProps } from 'recharts';
 import { ValueType, NameType } from 'recharts/src/component/DefaultTooltipContent';
 import { ContestResult } from '../types';
 import AtCoderColorByRate from '../lib/AtCoderColor';
@@ -10,13 +10,15 @@ type Props = { userName: string, latestContestName: string,
 
 const CustomTooltip = ({ active, payload, label }: TooltipProps<ValueType, NameType>) => {
   if (active && payload && payload.length) {
-    const aRate = payload[0].payload.aRate;
-    const hRate = payload[0].payload.hRate;
+    const aRate = payload[0].value as number;
+    const hRate = payload[1].value as number;
+    const attendance = payload[2].value as number;
     return (
       <div className={styles['custom-tooltip']}>
         <p className={styles.introduction}>{payload[0].payload.userName}</p>
         <p className={styles['description-' + AtCoderColorByRate(aRate)]}>algo: {aRate}</p>
         <p className={styles['description-' + AtCoderColorByRate(hRate)]}>heuristic: {hRate}</p>
+        <p className={styles.description}>attendance: {attendance}</p>
       </div>
     );
   }
@@ -38,6 +40,7 @@ const XRateChart = ({ userName, latestContestName,
       <YAxis type="number" dataKey="hRate" name="heuristic (new)"
         ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]}
         label={{ value: 'heuristic (new)', angle: -90, position: 'left'}} />
+      <ZAxis type="number" dataKey="attendance" range={[0, 70]} name="attendance" />
       <Tooltip content={<CustomTooltip />} />
       <Scatter name="all" fill="#8884d8" data={latestContestResults} />
       <Scatter name="you" fill="red"

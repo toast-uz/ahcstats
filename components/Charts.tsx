@@ -1,7 +1,7 @@
 import styles from '../styles/Home.module.scss'
 import HistChart from './HistChart';
 import DurationPerfChart from './DurationPerfChart';
-import PerfRateChart from './PerfRateChart';
+import RatePerfChart from './RatePerfChart';
 import XRateChart from './XRateChart';
 import { UserResult, ContestResult } from '../types';
 
@@ -26,7 +26,7 @@ export default function Charts({ userName, myContestHist,
       </div>
 
       <div className={styles.grid}>
-        <PerfRateChart
+        <RatePerfChart
           userName={userName}
           latestContestName={latestContestName}
           latestContestResults={latestContestResults}

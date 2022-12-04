@@ -10,20 +10,22 @@ type Props = { userName: string, latestContestName: string,
 
 const CustomTooltip = ({ active, payload, label }: TooltipProps<ValueType, NameType>) => {
   if (active && payload && payload.length) {
-    const hRateOld = payload[0].payload.hRateOld;
-    const perf = payload[0].payload.perf;
+    const hRateOld = payload[0].value as number;
+    const perf = payload[1].value as number;
+    const attendance = payload[2].value as number;
     return (
       <div className={styles['custom-tooltip']}>
         <p className={styles.introduction}>{payload[0].payload.userName}</p>
         <p className={styles['description-' + AtCoderColorByRate(hRateOld)]}>rate: {hRateOld}</p>
         <p className={styles['description-' + AtCoderColorByRate(perf)]}>perf: {perf}</p>
+        <p className={styles.description}>attendance: {attendance}</p>
       </div>
     );
   }
   return null;
 };
 
-const PerfRateChart = ({ userName, latestContestName,
+const RatePerfChart = ({ userName, latestContestName,
     latestContestResults, myLatestContestResult }: Props) => (
   <div className="container">
     <ScatterChart width={700} height={350}
@@ -38,7 +40,7 @@ const PerfRateChart = ({ userName, latestContestName,
       <YAxis type="number" dataKey="perf" name="perf"
         ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]}
         label={{ value: 'perf', angle: -90, position: 'left'}} />
-      <ZAxis type="number" dataKey="attendance" name="attendance" />
+      <ZAxis type="number" dataKey="attendance" range={[0, 70]} name="attendance" />
       <Tooltip content={<CustomTooltip />} />
       <Scatter name="all" fill="#8884d8" data={latestContestResults} />
       <Scatter name="you" fill="red"
@@ -47,4 +49,4 @@ const PerfRateChart = ({ userName, latestContestName,
   </div>
 );
 
-export default PerfRateChart;
+export default RatePerfChart;
