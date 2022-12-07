@@ -12,7 +12,7 @@ const CustomTooltip = ({ active, payload, label }: TooltipProps<ValueType, NameT
     const duration = payload[0].value as number;
     const perf = payload[1].value as number;
     return (
-      <div className={styles['custom-tooltip']}>
+      <div className={styles.tooltip}>
         <p className={styles.introduction}>{payload[0].payload.contestName}</p>
         <p className={styles.description}>duration: {duration}h</p>
         <p className={styles['description-' + AtCoderColorByRate(perf)]}>perf: {perf}</p>
@@ -23,7 +23,7 @@ const CustomTooltip = ({ active, payload, label }: TooltipProps<ValueType, NameT
 };
 
 const DurationPerfChart = ({ userName, myContestHist }: Props) => (
-  <div className="container">
+  <div>
     <ScatterChart width={700} height={350}
       margin={{top: 50, right: 20, left: 20, bottom: 50}}>
       <text x={700 / 2} y={10} fill="black" textAnchor="middle" dominantBaseline="central">
