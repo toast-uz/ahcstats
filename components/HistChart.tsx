@@ -10,12 +10,14 @@ type Props = { userName: string, myContestHist: UserResult[]}
 const CustomTooltip = ({ active, payload, label }: TooltipProps<ValueType, NameType>) => {
   if (active && payload && payload.length) {
     const perf = payload[0].value as number;
-    const rate = payload[1].value as number;
+    const hRate = payload[1].value as number;
+    const aRate = payload[2].value as number;
     return (
       <div className={styles.tooltip}>
         <p className={styles.introduction}>{label}</p>
         <p className={styles['description-' + AtCoderColorByRate(perf)]}>perf: {perf}</p>
-        <p className={styles['description-' + AtCoderColorByRate(rate)]}>rate: {rate}</p>
+        <p className={styles['description-' + AtCoderColorByRate(hRate)]}>rate: {hRate}</p>
+        <p className={styles['description-' + AtCoderColorByRate(aRate)]}>algo rate: {aRate}</p>
       </div>
     );
   }
@@ -36,8 +38,9 @@ const HistChart = ({ userName, myContestHist }: Props) => (
       <YAxis
         ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} />
       <Tooltip content={<CustomTooltip />} />
-      <Line type="monotone" dataKey="perf" stroke="red" connectNulls={true} />
-      <Line type="monotone" dataKey="rate" stroke="green" connectNulls={true} />
+      <Line name="perf" type="monotone" dataKey="perf" stroke="red" connectNulls={true} />
+      <Line name="rate" type="monotone" dataKey="hRate" stroke="green" connectNulls={true} />
+      <Line name="algo rate (at the end of ahc)" type="monotone" dataKey="aRate" stroke="blue" strokeDasharray="3 3" connectNulls={true} />
     </LineChart>
   </div>
 );

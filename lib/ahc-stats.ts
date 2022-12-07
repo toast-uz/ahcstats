@@ -1,7 +1,10 @@
-import ahcStats from '../json/ahc-stats.json'
+import contests from '../json/contests.json';
+import ahcStats from '../json/ahc-stats.json';
 import { UserResult, ContestResult } from '../types';
 
-const latestId = ahcStats.length - 1;
+export const numContests = contests.length;
+
+const latestId = contests.length - 1;
 
 function GetContestResultIdBy(id: number, userName: string): number {
   return ahcStats[id].results.findIndex(elm => elm.userName == userName);
@@ -23,7 +26,8 @@ export function GetMyContestsHist(userName: string): UserResult[] {
         contestName: ahcStats[id].contestName,
         duration: ahcStats[id].duration,
         perf: myContestResult?.perf,
-        rate: myContestResult?.hRate,
+        hRate: myContestResult?.hRate,
+        aRate: myContestResult?.aRate,
     };
     res.push(result);
   }

@@ -28,9 +28,7 @@ const RatePerfChart = ({ userName, latestContestName,
   const hRateOld = latestContestResults.map(result => { return result.hRateOld; });
   const perf = latestContestResults.map(result => { return result.perf; });
   const hRateOldMax = Math.max(...hRateOld);
-  const hRateOldMin = Math.min(...hRateOld);
   const perfMax = Math.max(...perf);
-  const perfMin = Math.min(...perf);
   return (
     <div className={styles[`background-${latestContestName}-01`]}>
     <ScatterChart width={700} height={350}
@@ -40,10 +38,10 @@ const RatePerfChart = ({ userName, latestContestName,
       </text>
       <CartesianGrid />
       <XAxis type="number" dataKey="hRateOld" name="rate (old)"
-        ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} domain={[hRateOldMin, hRateOldMax]}
+        ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} domain={[0, hRateOldMax]}
         label={{ value: "rate (old)", position: "bottom"}} />
       <YAxis type="number" dataKey="perf" name="perf"
-        ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} domain={[perfMin, perfMax]}
+        ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} domain={[0, perfMax]}
         label={{ value: 'perf', angle: -90, position: 'left'}} />
       <Tooltip content={<CustomTooltip />} />
       <Scatter name="you" fill="red" data={[myLatestContestResult]} />

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../styles/Charts.module.scss';
-import { ScatterChart, Scatter, XAxis, YAxis, ZAxis, CartesianGrid, Tooltip, TooltipProps } from 'recharts';
+import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, TooltipProps } from 'recharts';
 import { ValueType, NameType } from 'recharts/src/component/DefaultTooltipContent';
 import { ContestResult } from '../types';
 import AtCoderColorByRate from '../lib/AtCoderColor';
@@ -28,9 +28,7 @@ const XRateChart = ({ userName, latestContestName,
   const hRate = latestContestResults.map(result => { return result.hRate; });
   const aRate = latestContestResults.map(result => { return result.aRate; });
   const hRateMax = Math.max(...hRate);
-  const hRateMin = Math.min(...hRate);
   const aRateMax = Math.max(...aRate);
-  const aRateMin = Math.min(...aRate);
   return (
     <div className={styles[`background-${latestContestName}-02`]}>
       <ScatterChart width={700} height={350}
@@ -40,10 +38,10 @@ const XRateChart = ({ userName, latestContestName,
         </text>
         <CartesianGrid />
         <XAxis type="number" dataKey="aRate" name="algo"
-          ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} domain={[aRateMin, aRateMax]}
-          label={{ value: "algo (sometime after the event)", position: "bottom"}} />
+          ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} domain={[0, aRateMax]}
+          label={{ value: "algo (at the end of the event)", position: "bottom"}} />
         <YAxis type="number" dataKey="hRate" name="heuristic (new)"
-          ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} domain={[hRateMin, hRateMax]}
+          ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} domain={[0, hRateMax]}
           label={{ value: 'heuristic (new)', angle: -90, position: 'left'}} />
         <Tooltip content={<CustomTooltip />} />
         <Scatter name="you" fill="red"
