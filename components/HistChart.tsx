@@ -40,7 +40,7 @@ const HistChart = ({ userName, myContestHist }: Props) => (
       <Tooltip content={<CustomTooltip />} />
       <Line name="perf" type="monotone" dataKey="perf" stroke="red" connectNulls={true} />
       <Line name="rate" type="monotone" dataKey="hRate" stroke="green" connectNulls={true} />
-      <Line name="algo rate (at the end of ahc)" type="monotone" dataKey="aRate" stroke="blue" strokeDasharray="3 3" connectNulls={true} />
+      <Line name="algo rate (at the end of each contest)" type="monotone" dataKey="aRate" stroke="blue" strokeDasharray="3 3" connectNulls={true} />
     </LineChart>
   </div>
 );
