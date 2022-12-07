@@ -39,7 +39,7 @@ const XRateChart = ({ userName, latestContestName,
         <CartesianGrid />
         <XAxis type="number" dataKey="aRate" name="algo"
           ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} domain={[0, aRateMax]}
-          label={{ value: "algo (at the end of the event)", position: "bottom"}} />
+          label={{ value: "algo (at the end of the contest)", position: "bottom"}} />
         <YAxis type="number" dataKey="hRate" name="heuristic (new)"
           ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} domain={[0, hRateMax]}
           label={{ value: 'heuristic (new)', angle: -90, position: 'left'}} />
