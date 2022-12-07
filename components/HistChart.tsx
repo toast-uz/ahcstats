@@ -12,7 +12,7 @@ const CustomTooltip = ({ active, payload, label }: TooltipProps<ValueType, NameT
     const perf = payload[0].value as number;
     const rate = payload[1].value as number;
     return (
-      <div className={styles['custom-tooltip']}>
+      <div className={styles.tooltip}>
         <p className={styles.introduction}>{label}</p>
         <p className={styles['description-' + AtCoderColorByRate(perf)]}>perf: {perf}</p>
         <p className={styles['description-' + AtCoderColorByRate(rate)]}>rate: {rate}</p>
@@ -23,7 +23,7 @@ const CustomTooltip = ({ active, payload, label }: TooltipProps<ValueType, NameT
 };
 
 const HistChart = ({ userName, myContestHist }: Props) => (
-  <div className="container">
+  <div>
     <LineChart width={700} height={350}
       margin={{top: 50, right: 20, left: 20, bottom: 50}}
       data={myContestHist}>

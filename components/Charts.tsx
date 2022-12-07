@@ -1,8 +1,8 @@
 import styles from '../styles/Home.module.scss'
 import HistChart from './HistChart';
 import DurationPerfChart from './DurationPerfChart';
-import RatePerfChart from './RatePerfChart';
 import XRateChart from './XRateChart';
+import RatePerfChart from './RatePerfChart';
 import { UserResult, ContestResult } from '../types';
 
 type Props = {

@@ -1,6 +1,6 @@
 @use "internallink" as internal;
 
-.custom-tooltip {
+.tooltip {
   margin: 0;
   line-height: 24px;
   border: 1px solid #d0d0d0;
@@ -15,12 +15,26 @@
 
 .description {
   margin: 0;
-  color: rgb(3, 62, 146)
+  color: rgb(3, 62, 146);
 }
 
 @each $key, $value in internal.$atcoder-colors {
   .description-#{$key} {
     margin: 0;
     color: $value;
+  }
+}
+
+@each $name in internal.$ahc-contest-names {
+  .background-#{$name}-01 {
+    background-image: url(../public/images/#{$name}_01.png);
+    background-size: 100%, 200%;
+    background-repeat: no-repeat;
+  }
+
+  .background-#{$name}-02 {
+    background-image: url(../public/images/#{$name}_02.png);
+    background-size: 100%, 200%;
+    background-repeat: no-repeat;
   }
 }

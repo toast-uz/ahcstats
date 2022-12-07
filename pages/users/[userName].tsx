@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { GetMyContestsHist, latestContestName, latestContestResults, GetLatestContestResultIdBy } from '../../lib/ahc-stats';
 
-const ChartsWIthoutSSR = dynamic(
+const ChartsWithoutSSR = dynamic(
   import("../../components/Charts"), { ssr: false });
 
 export default function Home() {
@@ -21,7 +21,7 @@ export default function Home() {
         - Latest contest: {' '}
         <code className={styles.code}>{latestContestName}</code>
       </div>
-      <ChartsWIthoutSSR userName={userName}
+      <ChartsWithoutSSR userName={userName}
         myContestHist={myContestHist}
         latestContestName={latestContestName}
         latestContestResults={latestContestResults}
