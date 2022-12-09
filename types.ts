@@ -12,10 +12,19 @@ export type ContestMetadata = {
   maxPerf: number,
 }
 
+export type UserData = { [contestName: string]: {
+  place: number,
+  hRate: number,
+  aRate: number,
+  perf: number,
+}}
+
 export type UserResult = {
   contestName: string;
   duration: number;
+  place: number;
   perf: number;
+  hRateOld: number;
   hRate: number;
   aRate: number;
 }

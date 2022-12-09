@@ -2,11 +2,11 @@ import React from 'react';
 import styles from '../styles/Charts.module.scss';
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, TooltipProps } from 'recharts';
 import { ValueType, NameType } from 'recharts/src/component/DefaultTooltipContent';
-import { ContestResult } from '../types';
+import { UserResult } from '../types';
 import AtCoderColorByRate from '../lib/AtCoderColor';
 
 type Props = { userName: string, latestContestName: string,
-  latestContestResults: ContestResult[], myLatestContestResult: ContestResult }
+  maxX: number, maxY: number, myLatestContestResult: UserResult }
 
 const CustomTooltip = ({ active, payload, label }: TooltipProps<ValueType, NameType>) => {
   if (active && payload && payload.length) {
@@ -24,11 +24,7 @@ const CustomTooltip = ({ active, payload, label }: TooltipProps<ValueType, NameT
 };
 
 const XRateChart = ({ userName, latestContestName,
-    latestContestResults, myLatestContestResult }: Props) => {
-  const hRate = latestContestResults.map(result => { return result.hRate; });
-  const aRate = latestContestResults.map(result => { return result.aRate; });
-  const hRateMax = Math.max(...hRate);
-  const aRateMax = Math.max(...aRate);
+    maxX, maxY, myLatestContestResult }: Props) => {
   return (
     <div className={styles[`background-${latestContestName}-02`]}>
       <ScatterChart width={700} height={350}
@@ -38,10 +34,10 @@ const XRateChart = ({ userName, latestContestName,
         </text>
         <CartesianGrid />
         <XAxis type="number" dataKey="aRate" name="algo"
-          ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} domain={[0, aRateMax]}
+          ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} domain={[0, maxX]}
           label={{ value: "algo (at the end of the contest)", position: "bottom"}} />
         <YAxis type="number" dataKey="hRate" name="heuristic (new)"
-          ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} domain={[0, hRateMax]}
+          ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} domain={[0, maxY]}
           label={{ value: 'heuristic (new)', angle: -90, position: 'left'}} />
         <Tooltip content={<CustomTooltip />} />
         <Scatter name="you" fill="red"

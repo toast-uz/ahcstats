@@ -14,6 +14,7 @@ const CustomTooltip = ({ active, payload, label }: TooltipProps<ValueType, NameT
     return (
       <div className={styles.tooltip}>
         <p className={styles.introduction}>{payload[0].payload.contestName}</p>
+        <p className={styles.introduction}>place: {payload[0].payload.place}</p>
         <p className={styles.description}>duration: {duration}h</p>
         <p className={styles['description-' + AtCoderColorByRate(perf)]}>perf: {perf}</p>
       </div>
