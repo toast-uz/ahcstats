@@ -27,7 +27,7 @@ const DurationPerfChart = ({ userName, myContestHist }: Props) => (
   <div>
     <ScatterChart width={700} height={350}
       margin={{top: 50, right: 20, left: 20, bottom: 50}}>
-      <text x={700 / 2} y={10} fill="black" textAnchor="middle" dominantBaseline="central">
+      <text x="50%" y={10} fill="gray" textAnchor="middle" dominantBaseline="central">
           <tspan fontSize="1.2rem">Contest duration and {userName}&apos;s perf</tspan>
       </text>
       <CartesianGrid />
