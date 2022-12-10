@@ -8,8 +8,8 @@ import { ContestResult } from '../types';
 import AtCoderColorByRate from '../lib/AtCoderColor';
 
 type Props = {
-  latestContestName: string,
-  latestContestResults: ContestResult[],
+  contestName: string,
+  contestResults: ContestResult[],
 }
 
 const CustomTooltip1 = ({ active, payload, label }: TooltipProps<ValueType, NameType>) => {
@@ -43,35 +43,35 @@ const CustomTooltip2 = ({ active, payload, label }: TooltipProps<ValueType, Name
 };
 
 export default function DownloadCharts({
-    latestContestName, latestContestResults }: Props) {
-  const [getChart01Png, { ref: chart01Ref }] = useCurrentPng();
+    contestName, contestResults }: Props) {
+  const [getChart01Png, { ref: chart01Ref }] = useCurrentPng({ backgroundColor: null });
   const handleChart01Download = useCallback(async () => {
     const png = await getChart01Png();
     if (png) {
-      FileSaver.saveAs(png, 'contest_01.png');
+      FileSaver.saveAs(png, `${contestName}_01.png`);
     }
-  }, [getChart01Png]);
-  const [getChart02Png, { ref: chart02Ref }] = useCurrentPng();
+  }, [getChart01Png, contestName]);
+  const [getChart02Png, { ref: chart02Ref }] = useCurrentPng({ backgroundColor: null });
   const handleChart02Download = useCallback(async () => {
     const png = await getChart02Png();
     if (png) {
-      FileSaver.saveAs(png, 'contest_02.png');
+      FileSaver.saveAs(png, `${contestName}_02.png`);
     }
-  }, [getChart02Png]);
+  }, [getChart02Png, contestName]);
 
-  const hRateOld = latestContestResults.map(result => { return result.hRateOld; });
-  const perf = latestContestResults.map(result => { return result.perf; });
+  const hRateOld = contestResults.map(result => { return result.hRateOld; });
+  const perf = contestResults.map(result => { return result.perf; });
   const hRateOldMax = Math.max(...hRateOld);
   const perfMax = Math.max(...perf);
-  const hRate = latestContestResults.map(result => { return result.hRate; });
-  const aRate = latestContestResults.map(result => { return result.aRate; });
+  const hRate = contestResults.map(result => { return result.hRate; });
+  const aRate = contestResults.map(result => { return result.aRate; });
   const hRateMax = Math.max(...hRate);
   const aRateMax = Math.max(...aRate);
 
   return (
     <div>
       <h4>
-        <code>Chart: {latestContestName}_01</code>
+        <code>Chart: {contestName}_01</code>
       </h4>
       <ScatterChart width={700} height={350} ref={chart01Ref}
         margin={{top: 50, right: 20, left: 20, bottom: 50}}>
@@ -82,15 +82,15 @@ export default function DownloadCharts({
         <YAxis type="number" dataKey="perf" name="perf" tick={false} axisLine={false}
           domain={[0, perfMax]} />
         <ZAxis type="number" dataKey="attendance" range={[0, 60]} name="attendance" />
-        <Scatter name="all" fill="#8884d8" data={latestContestResults} />
+        <Scatter name="all" fill="#8884d8" data={contestResults} />
         <Tooltip content={<CustomTooltip1 />} />
       </ScatterChart>
       <br />
       <button onClick={handleChart01Download}>
-        <code>Download contest_01.png</code>
+        <code>Download {contestName}_01.png</code>
       </button>
       <h4>
-        <code>Chart: {latestContestName}_02</code>
+        <code>Chart: {contestName}_02</code>
       </h4>
       <ScatterChart width={700} height={350} ref={chart02Ref}
         margin={{top: 50, right: 20, left: 20, bottom: 50}}>
@@ -101,12 +101,12 @@ export default function DownloadCharts({
         <YAxis type="number" dataKey="hRate" name="heuristic (new)" tick={false} axisLine={false}
           domain={[0, hRateMax]} />
         <ZAxis type="number" dataKey="attendance" range={[0, 60]} name="attendance" />
-        <Scatter name="all" fill="#8884d8" data={latestContestResults} />
+        <Scatter name="all" fill="#8884d8" data={contestResults} />
         <Tooltip content={<CustomTooltip2 />} />
       </ScatterChart>
       <br />
       <button onClick={handleChart02Download}>
-        <code>Download contest_02.png</code>
+        <code>Download {contestName}_02.png</code>
       </button>
     </div>
   );
