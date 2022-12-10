@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../styles/Charts.module.scss';
-import { LineChart, Line, XAxis, YAxis, Legend, CartesianGrid, Tooltip, TooltipProps } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Legend, CartesianGrid, Tooltip, TooltipProps, ResponsiveContainer } from 'recharts';
 import { ValueType, NameType } from 'recharts/src/component/DefaultTooltipContent';
 import { UserResult } from '../types';
 import AtCoderColorByRate from '../lib/AtCoderColor';
@@ -26,23 +26,25 @@ const CustomTooltip = ({ active, payload, label }: TooltipProps<ValueType, NameT
 };
 
 const HistChart = ({ userName, myContestHist }: Props) => (
-  <div>
-    <LineChart width={700} height={350}
-      margin={{top: 50, right: 20, left: 20, bottom: 50}}
-      data={myContestHist}>
-      <text x="50%" y={10} fill="gray" textAnchor="middle" dominantBaseline="central">
-          <tspan fontSize="1.2rem"> {userName}&apos;s rate and perf history</tspan>
-      </text>
-      <CartesianGrid />
-      <Legend />
-      <XAxis dataKey="contestName" />
-      <YAxis
-        ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} />
-      <Tooltip content={<CustomTooltip />} />
-      <Line name="perf" type="monotone" dataKey="perf" stroke="red" connectNulls={true} />
-      <Line name="rate" type="monotone" dataKey="hRate" stroke="green" connectNulls={true} />
-      <Line name="algo rate (at the end of each contest)" type="monotone" dataKey="aRate" stroke="blue" strokeDasharray="3 3" connectNulls={true} />
-    </LineChart>
+  <div style={{ width: '100%', height: 350 }}>
+    <ResponsiveContainer>
+      <LineChart
+        margin={{top: 50, right: 20, left: 20, bottom: 50}}
+        data={myContestHist}>
+        <text x="50%" y={10} fill="gray" textAnchor="middle" dominantBaseline="central">
+            <tspan fontSize="1.2rem"> {userName}&apos;s rate and perf history</tspan>
+        </text>
+        <CartesianGrid />
+        <Legend />
+        <XAxis dataKey="contestName" />
+        <YAxis
+          ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} />
+        <Tooltip content={<CustomTooltip />} />
+        <Line name="perf" type="monotone" dataKey="perf" stroke="red" connectNulls={true} />
+        <Line name="rate" type="monotone" dataKey="hRate" stroke="green" connectNulls={true} />
+        <Line name="algo rate (at the end of each contest)" type="monotone" dataKey="aRate" stroke="blue" strokeDasharray="3 3" connectNulls={true} />
+      </LineChart>
+    </ResponsiveContainer>
   </div>
 );
 
