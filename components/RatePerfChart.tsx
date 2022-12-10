@@ -25,12 +25,13 @@ const CustomTooltip = ({ active, payload, label }: TooltipProps<ValueType, NameT
 
 const RatePerfChart = ({ userName, latestContestName,
     maxX, maxY, myLatestContestResult }: Props) => {
+  const attendance = myLatestContestResult.perf;
   return (
     <div className={styles[`background-${latestContestName}-01`]}>
     <ScatterChart width={700} height={350}
       margin={{top: 50, right: 20, left: 20, bottom: 50}}>
       <text x={700 / 2} y={10} fill="black" textAnchor="middle" dominantBaseline="central">
-          <tspan fontSize="1.2rem">Rate and perf of {latestContestName} ({userName} is red)</tspan>
+          <tspan fontSize="1.2rem">Rate and perf ({userName} {attendance ? 'is red' : 'was absent'})</tspan>
       </text>
       <CartesianGrid />
       <XAxis type="number" dataKey="hRateOld" name="rate (old)"

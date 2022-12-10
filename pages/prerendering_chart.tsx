@@ -1,6 +1,6 @@
 import Layout from '../components/Layout';
 import dynamic from 'next/dynamic';
-import { latestContestName, latestContestResults } from '../lib/ahc-stats';
+import contestData from '../json/ahc006.json';
 
 const DownloadChartsWithoutSSR = dynamic(
   import("../components/DownloadCharts"), { ssr: false });
@@ -9,8 +9,8 @@ export default function Home() {
   return (
     <Layout>
       <DownloadChartsWithoutSSR
-        latestContestName={latestContestName}
-        latestContestResults={latestContestResults} />
+        contestName={contestData.contestName}
+        contestResults={contestData.results} />
     </Layout>
   )
 };
