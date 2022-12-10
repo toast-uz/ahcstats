@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
 import type { ReactNode } from 'react';
-import { Analytics } from '@vercel/analytics/react';
 
 type Props = { children: ReactNode; };
 
@@ -24,7 +23,6 @@ const Layout = ({ children }: Props) => {
         by <a href='https://twitter.com/ToastUz' target="_blank" rel="noopener noreferrer">ToastUz</a>
         , source code is at <a href='https://github.com/toast-uz/ahc-stats' target="_blank" rel="noopener noreferrer">GitHub</a>
       </footer>
-      <Analytics />
     </div>
   )
 };
