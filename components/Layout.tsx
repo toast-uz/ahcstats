@@ -10,6 +10,7 @@ const Layout = ({ children }: Props) => {
       <Head>
         <title>ahc-stats</title>
         <meta name="description" content="ahc-stats" />
+        <meta name="google-site-verification" content="_kLReeB5nmuUoJdyJkgjUbPwxR8cMkdqQ98997JO3Xw" />
       </Head>
 
       <main className={styles.main}>
