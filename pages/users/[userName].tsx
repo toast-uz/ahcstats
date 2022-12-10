@@ -4,8 +4,8 @@ import styles from '../../styles/Home.module.scss'
 import dynamic from 'next/dynamic';
 import useSWR from 'swr';
 import { useRouter } from 'next/router';
-import type { ContestMetadata, UserResult, UserData } from '../../types';
-import { numContests, GetMyContestsHist } from '../../lib/ContestUtils';
+import type { UserData } from '../../types';
+import { GetMyContestsHist } from '../../lib/ContestUtils';
 
 const ChartsWithoutSSR = dynamic(
   import("../../components/Charts"), { ssr: false });
