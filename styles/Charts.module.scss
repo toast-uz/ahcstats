@@ -28,6 +28,11 @@
   }
 }
 
+.background {
+  width: 100%;
+  height: 350;
+}
+
 @each $name in internal.$ahc-contest-names {
   .background-#{$name}-01 {
     background-image: url(../public/images/#{$name}_01.png);
