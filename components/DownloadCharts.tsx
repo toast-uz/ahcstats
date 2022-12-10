@@ -61,12 +61,13 @@ export default function DownloadCharts({
 
   const hRateOld = contestResults.map(result => { return result.hRateOld; });
   const perf = contestResults.map(result => { return result.perf; });
-  const hRateOldMax = Math.max(...hRateOld);
-  const perfMax = Math.max(...perf);
+  const red = 2800;
+  const hRateOldMax = Math.max(...hRateOld, red);
+  const perfMax = Math.max(...perf, red);
   const hRate = contestResults.map(result => { return result.hRate; });
   const aRate = contestResults.map(result => { return result.aRate; });
-  const hRateMax = Math.max(...hRate);
-  const aRateMax = Math.max(...aRate);
+  const hRateMax = Math.max(...hRate, red);
+  const aRateMax = Math.max(...aRate, red);
 
   return (
     <div>
