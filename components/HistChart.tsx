@@ -15,7 +15,7 @@ const CustomTooltip = ({ active, payload, label }: TooltipProps<ValueType, NameT
     return (
       <div className={styles.tooltip}>
         <p className={styles.introduction}>{label}</p>
-        <p className={styles.introduction}>place: {payload[0].payload.place}</p>
+        <p className={styles.description}>place: {payload[0].payload.place}</p>
         <p className={styles['description-' + AtCoderColorByRate(perf)]}>perf: {perf}</p>
         <p className={styles['description-' + AtCoderColorByRate(hRate)]}>rate: {hRate}</p>
         <p className={styles['description-' + AtCoderColorByRate(aRate)]}>algo rate: {aRate}</p>
