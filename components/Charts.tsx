@@ -3,18 +3,17 @@ import HistChart from './HistChart';
 import DurationPerfChart from './DurationPerfChart';
 import XRateChart from './XRateChart';
 import RatePerfChart from './RatePerfChart';
-import { UserResult, ContestResult } from '../types';
+import { UserResult, ContestMetadata } from '../types';
 
 type Props = {
     userName: string,
     myContestHist: UserResult[],
-    latestContestName: string,
-    latestContestResults: ContestResult[],
-    myLatestContestResult: ContestResult,
+    latestContestMetadata: ContestMetadata,
+    myLatestContestResult: UserResult,
 }
 
 export default function Charts({ userName, myContestHist,
-    latestContestName, latestContestResults, myLatestContestResult }: Props) {
+    latestContestMetadata, myLatestContestResult }: Props) {
   return (
     <div>
       <div className={styles.grid}>
@@ -28,15 +27,17 @@ export default function Charts({ userName, myContestHist,
       <div className={styles.grid}>
         <RatePerfChart
           userName={userName}
-          latestContestName={latestContestName}
-          latestContestResults={latestContestResults}
+          latestContestName={latestContestMetadata.contestName}
+          maxX={latestContestMetadata.maxHRateOld}
+          maxY={latestContestMetadata.maxPerf}
           myLatestContestResult={myLatestContestResult} />
       </div>
 
       <div className={styles.grid}>
         <XRateChart userName={userName}
-          latestContestName={latestContestName}
-          latestContestResults={latestContestResults}
+          latestContestName={latestContestMetadata.contestName}
+          maxX={latestContestMetadata.maxARate}
+          maxY={latestContestMetadata.maxHRate}
           myLatestContestResult={myLatestContestResult} />
       </div>
     </div>

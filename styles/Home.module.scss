@@ -67,6 +67,9 @@
   font-size: 1.1rem;
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
     Bitstream Vera Sans Mono, Courier New, monospace;
+  @media (prefers-color-scheme: dark) {
+    color: black;
+  }
 }
 
 .grid {

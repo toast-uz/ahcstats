@@ -2,11 +2,11 @@ import React from 'react';
 import styles from '../styles/Charts.module.scss';
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, TooltipProps } from 'recharts';
 import { ValueType, NameType } from 'recharts/src/component/DefaultTooltipContent';
-import { ContestResult } from '../types';
+import { UserResult } from '../types';
 import AtCoderColorByRate from '../lib/AtCoderColor';
 
 type Props = { userName: string, latestContestName: string,
-  latestContestResults: ContestResult[], myLatestContestResult: ContestResult }
+  maxX: number, maxY: number, myLatestContestResult: UserResult }
 
 const CustomTooltip = ({ active, payload, label }: TooltipProps<ValueType, NameType>) => {
   if (active && payload && payload.length) {
@@ -24,11 +24,7 @@ const CustomTooltip = ({ active, payload, label }: TooltipProps<ValueType, NameT
 };
 
 const RatePerfChart = ({ userName, latestContestName,
-    latestContestResults, myLatestContestResult }: Props) => {
-  const hRateOld = latestContestResults.map(result => { return result.hRateOld; });
-  const perf = latestContestResults.map(result => { return result.perf; });
-  const hRateOldMax = Math.max(...hRateOld);
-  const perfMax = Math.max(...perf);
+    maxX, maxY, myLatestContestResult }: Props) => {
   return (
     <div className={styles[`background-${latestContestName}-01`]}>
     <ScatterChart width={700} height={350}
@@ -38,10 +34,10 @@ const RatePerfChart = ({ userName, latestContestName,
       </text>
       <CartesianGrid />
       <XAxis type="number" dataKey="hRateOld" name="rate (old)"
-        ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} domain={[0, hRateOldMax]}
+        ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} domain={[0, maxX]}
         label={{ value: "rate (old)", position: "bottom"}} />
       <YAxis type="number" dataKey="perf" name="perf"
-        ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} domain={[0, perfMax]}
+        ticks={[0, 400, 800, 1200, 1600, 2000, 2400, 2800]} domain={[0, maxY]}
         label={{ value: 'perf', angle: -90, position: 'left'}} />
       <Tooltip content={<CustomTooltip />} />
       <Scatter name="you" fill="red" data={[myLatestContestResult]} />
