@@ -1,6 +1,6 @@
 import Layout from '../components/Layout';
 import dynamic from 'next/dynamic';
-import contestData from '../json/ahc006.json';
+import contestData from '../json/ahc017.json';
 
 const DownloadChartsWithoutSSR = dynamic(
   import("../components/DownloadCharts"), { ssr: false });

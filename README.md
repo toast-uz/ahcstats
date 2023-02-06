@@ -1,4 +1,4 @@
-AtCoder Heuristic Contest Statistics (ahc-stats)
+AtCoder Heuristic Contest Statistics (ahcstats)
 
 Copyright(C) by ToastUz
 https://twitter.com/ToastUz
