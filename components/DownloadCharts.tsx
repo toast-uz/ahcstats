@@ -2,7 +2,7 @@ import styles from '../styles/Charts.module.scss';
 import FileSaver from 'file-saver';
 import { useCallback } from 'react';
 import { ScatterChart, Scatter, XAxis, YAxis, ZAxis, Tooltip, TooltipProps } from 'recharts';
-import { ValueType, NameType } from 'recharts/src/component/DefaultTooltipContent';
+import { ValueType, NameType } from 'recharts/types/component/DefaultTooltipContent';
 import { useCurrentPng } from 'recharts-to-png';
 import { ContestResult } from '../types';
 import AtCoderColorByRate from '../lib/AtCoderColor';
