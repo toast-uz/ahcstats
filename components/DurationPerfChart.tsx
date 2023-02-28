@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../styles/Charts.module.scss';
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, TooltipProps, ResponsiveContainer } from 'recharts';
-import { ValueType, NameType } from 'recharts/src/component/DefaultTooltipContent';
+import { ValueType, NameType } from 'recharts/types/component/DefaultTooltipContent';
 import { UserResult } from '../types';
 import AtCoderColorByRate from '../lib/AtCoderColor';
 
